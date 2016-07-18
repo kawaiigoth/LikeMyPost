@@ -1,0 +1,11 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+    FormsAuthentication.SignOut();
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}
+

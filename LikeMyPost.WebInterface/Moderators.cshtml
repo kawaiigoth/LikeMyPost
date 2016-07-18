@@ -1,0 +1,47 @@
+﻿@using LikeMyPost.WebInterface;
+@using ILikeMyPostBLL;
+@using LikeMyPost.Entities;
+@using ILikeMyPost.BLL;
+
+@if (User.IsInRole("Admin"))
+{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+    Page.Title = "Moderators";
+    var users = Helper.GetAllUsers(true);
+
+    <div class="container-fluid">
+        <main class="row margin-top-md" id="MainWindow">
+            <div class="container">
+                <section class="col-sm-12">
+                    <h2>@Page.Title</h2>
+                </section>
+            </div>
+            <section class="col-sm-6 col-sm-offset-2 users">
+                <ul id="ListOfUsers">
+                    @foreach (var user in users)
+                {
+                        <li class="user" data-user-id="@user.Id">
+                                <div class="counter">                                    
+                                    <div class="votes">@user.Raiting</div>
+                                </div>
+                                    <h1 class="name"><a href="#" class="get-post">@user.Name</a></h1>
+                                    @if (Helper.UserIsInRole(user.Name, "Moderator") && !Helper.UserIsInRole(user.Name, "Admin"))
+                                    {
+                                        <button class="btn btn-link removeModerator">Remove Moderator</button>
+                                    }
+                                    else if (!Helper.UserIsInRole(user.Name, "Admin"))
+                                    {
+                                        <button class="btn btn-link giveModerator">Give Moderator</button>
+                                    }
+                        </li>
+                    }
+                </ul>
+            </section>
+            <aside class="col-sm-4"></aside>
+        </main>
+    </div>
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.Forbidden);
+}

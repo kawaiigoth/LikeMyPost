@@ -1,0 +1,35 @@
+﻿@{ 
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+@{
+    var post_id = Request["id"];
+    int id;
+    if (string.IsNullOrWhiteSpace(post_id) || !int.TryParse(post_id, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+        return;
+    }
+
+    PostDTO post = Helper.GetPostByID(id);
+    if (post == null)
+    {
+        Response.SetStatus(HttpStatusCode.NotFound);
+        return;
+    }
+    Page.Title = post.Heading;
+}
+<div class="container-fluid">
+    <main class="row margin-top-md" id="MainWindow">
+        <div class="container">
+            <section class="col-sm-12">
+                <h2>@User.Identity.Name</h2>
+            </section>
+        </div>
+               
+        <aside class="col-sm-4"></aside>
+    </main>
+</div>
+@RenderPage("~/Modals/_LoginModal.cshtml")
+@RenderPage("~/Modals/_AddPostModal.cshtml")
+@RenderPage("~/Modals/_RegisterModal.cshtml")
+

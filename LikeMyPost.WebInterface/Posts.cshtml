@@ -1,0 +1,111 @@
+﻿@using LikeMyPost.WebInterface;
+@using ILikeMyPostBLL;
+@using LikeMyPost.Entities;
+@using ILikeMyPost.BLL;
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+@{
+    var post_id = Request["id"];
+    int id;
+    if (string.IsNullOrWhiteSpace(post_id) || !int.TryParse(post_id, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+        return;
+    }
+
+    PostDTO post = Helper.GetPostByID(id);
+    if (post == null)
+    {
+        Response.SetStatus(HttpStatusCode.NotFound);
+        return;
+    }
+    var comments = Helper.GetComments(post.Id);
+    Page.Title = post.Heading;
+}
+
+<div class="container post-opened">
+    <section data-post-id="@post.Id" class="col-sm-12 post">
+        <header>
+            <div class="counter">
+                @if (User.Identity.IsAuthenticated && post.Author != User.Identity.Name)
+                {
+                    if (!Helper.IsVoted(User.Identity.Name, post.Id))
+                    {
+                        <button class="btn-link vote">Like!</button>
+                    }
+                    else
+                    {
+                        <button class="btn-link vote voted">DisLike!</button>
+                    }
+                }
+                <div class="votes">@post.Raiting</div>
+            </div>
+
+            <div class="header-misc">
+                <h1>@post.Heading</h1>
+                <a href="#" class="comments-number">7 комментариев</a> <a class="name" href="#">@post.Author</a>
+                <span class="time-passed">@post.Date</span>
+            </div>
+        </header>
+        <main>
+            @if (post.Image != Guid.Empty)
+            {
+                <img src="~/postImg?id=@post.Image" alt="image from @post.Id" class="img-responsive img-rounded" />
+            }
+            @post.Text
+        </main>
+        <footer></footer>
+    </section>
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+<div class="container">
+    <form method="post" role="form" id="AddComment">
+        <div class="form-group">
+            <label for="comment">Комментарий:</label>
+            <textarea class="form-control" required rows="4" maxlength="500" id="comment-area" name="comment"></textarea>
+        </div>
+        <input type="hidden" name="post_id" value="@post.Id" />
+        <input type="submit" class="btn btn-default" id="CommentSubmit" value="Добавить коментарий">
+    </form>
+</div>
+}
+<section class="col-sm-6 col-sm-offset-2 comments">
+    <ul>
+        @foreach (var comment in comments)
+            {
+            <li data-comment-id="@comment.Id">
+                <article class="comment">
+                    <div class="counter">
+                        @if (User.Identity.IsAuthenticated && comment.Author != User.Identity.Name)
+                        {
+                            if (!Helper.IsCommentVoted(User.Identity.Name, comment.Id))
+                            {
+                                <button class="btn-link vote">Like!</button>
+                            }
+                            else
+                            {
+                                <button class="btn-link vote voted">DisLike!</button>
+                            }
+                        }
+                        <div class="votes">@comment.Raiting</div>
+                    </div>
+
+                    <header><span class="name"><a href="#">@comment.Author</a></span> написал:</header>
+                    <div class="message">@comment.Text</div>
+                    <footer>
+                        <div class="time-passed">@comment.Date</div>
+                        @if (User.IsInRole("Moderator"))
+                        {
+                            <div class="comment-actions">
+                                <button class="btn-link delete-comment">Удалить Комментарий</button>
+                            </div>                          
+                        }
+                        
+                    </footer>
+                </article>
+            </li>
+        }
+    </ul>
+</section>

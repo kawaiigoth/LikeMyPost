@@ -1,0 +1,29 @@
+﻿@using LikeMyPost.WebInterface;
+@using ILikeMyPostBLL;
+@using ILikeMyPost.BLL;
+
+@if (IsPost)
+            {
+                var posts = Helper.GetNewPosts();
+
+                if (IsAjax)
+                {
+                    foreach (var post in posts)
+                    {
+            <li class="post" data-post-id="@post.Id">
+                <header>
+                    <div class="header-misc">
+                        <h1><a href="~/Posts?id=@post.Id" class="get-post">@post.Heading</a></h1>
+                        <a class="name" href="#">@post.Author</a>
+                        <span class="time-passed">@post.Date</span>
+                    </div>
+                </header>
+            </li>
+        }
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}

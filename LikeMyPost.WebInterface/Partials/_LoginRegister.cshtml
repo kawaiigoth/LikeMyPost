@@ -1,0 +1,50 @@
+﻿<div class="container-fluid user-form-back" id="Login">
+    <div class="user-form">
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#loginTab" aria-controls="login" role="tab" data-toggle="tab">Вход</a></li>
+            <li role="presentation"><a href="#registerTab" aria-controls="register" role="tab" data-toggle="tab">Регистрация</a></li>
+        </ul>
+        <div class="tab-content margin-top-md">
+            <div role="tabpanel" class="tab-pane active" id="loginTab">
+                <div class="hide alert alert-danger" id="LoginError">
+                </div>
+                <form method="post" role="form" id="LoginForm" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" name="password" minlength="6" maxlength="12" class="form-control" required>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="rememberMe" name="remember"> Запомнить меня.
+                        </label>
+                    </div>
+                    <input type="submit" class="btn btn-submit" id="LoginSubmit" value="Войти">
+                </form>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="registerTab">
+                <div class="hide alert alert-danger" id="RegisterError">
+                </div>
+                <form method="post" role="form" id="RegisterForm" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль (от 6 до 12 символов):</label>
+                        <input type="password" name="password" class="form-control" minlength="6" maxlength="12" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Имя:</label>
+                        <input type="text" name="username" class="form-control username-length" minlength="4" maxlength="30" required>
+                    </div>
+                    <input type="submit" class="btn btn-submit" id="RegisterSubmit" value="Зарегестрироваться">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\bin\Debug\ILikeMyPostBLL.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\bin\Debug\ILikeMyPostBLL.pdb
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\bin\Debug\LikeMyPost.Entities.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\bin\Debug\LikeMyPost.Entities.pdb
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\obj\Debug\ILikeMyPost.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\obj\Debug\ILikeMyPostBLL.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\ILikeMyPostBLL\obj\Debug\ILikeMyPostBLL.pdb

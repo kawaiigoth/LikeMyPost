@@ -1,0 +1,34 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+    var type = Request["type"];
+    var user_id = Request["id"];
+    int id;
+    bool code = false;
+    if (!string.IsNullOrWhiteSpace(type) && !string.IsNullOrWhiteSpace(user_id) && int.TryParse(user_id, out id))
+    {
+
+        if (type == "Add")
+        {
+            code = Helper.AddUserToRole(id, "Moderator");
+        }
+        else if (type == "Remove")
+        {
+            code = Helper.RemoveRoleFromUser(id, "Moderator");
+        }
+    }
+
+    if (IsAjax)
+    {
+        Json.Write(new
+        {
+            success = code,
+        }, Response.Output);
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}

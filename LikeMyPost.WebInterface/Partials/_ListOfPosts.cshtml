@@ -1,0 +1,59 @@
+﻿@using LikeMyPost.WebInterface;
+@using LikeMyPost.Entities;
+@{
+    List<List<PostDTO>> Pages = Page.posts;
+    int page_number = Page.page_number;
+    var page = Pages[page_number-1];
+}
+<div class="container-fluid">
+    <main class="row margin-top-md" id="MainWindow">
+        <div class="container">
+            <section class="col-sm-12">
+                <h2>@Page.Title</h2>
+            </section>
+        </div>
+        <section class="col-sm-6 col-sm-offset-2 posts">
+            <ul id="ListOfPosts">
+
+                @foreach (var post in page)
+                    {
+                        <li class="post" data-post-id="@post.Id">
+                            <header>
+                                <div class="counter">
+                                    @if (User.Identity.IsAuthenticated && post.Author != User.Identity.Name)
+                                    {
+                                        if (!Helper.IsVoted(User.Identity.Name, post.Id))
+                                        {
+                                            <button class="btn-link vote">Like!</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn-link vote voted">DisLike!</button>
+                                        }
+                                    }
+                                    <div class="votes">@post.Raiting</div>
+                                </div>
+                                <div class="header-misc">
+                                    <h1><a href="~/Posts?id=@post.Id" class="get-post">@post.Heading</a></h1>
+                                    <a class="name" href="#">@post.Author</a>
+                                    <span class="time-passed">@post.Date</span>
+                                    @if (User.IsInRole("Moderator"))
+                                    {
+                                        <button class="btn-link delete-post">Удалить Пост</button>
+                                    }
+                                </div>
+                            </header>
+                        </li>
+                    }
+            </ul>
+            @if (page_number < Pages.Count)
+            {
+                <a href="~/@Page.url?page=@(page_number+1)">Next</a>
+            }
+            @if (page_number > 1)
+            {
+                <a href="~/@Page.url?page=@(page_number-1)">Back</a>
+            }
+        </section>
+    </main>
+</div>
