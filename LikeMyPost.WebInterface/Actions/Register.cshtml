@@ -1,0 +1,30 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+
+    string email = Request.Form["email"];
+    string password = Request.Form["password"];
+    string name = Request.Form["username"];
+
+    if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(name))
+    {
+        var code = Helper.CanRegister(email, password, name);
+        if (code == 1)
+        {
+            FormsAuthentication.SetAuthCookie(name, createPersistentCookie: false);
+        }
+        if (IsAjax)
+        {
+            Json.Write(new
+            {
+                success = code,
+            }, Response.Output);
+        }
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.Forbidden);
+}

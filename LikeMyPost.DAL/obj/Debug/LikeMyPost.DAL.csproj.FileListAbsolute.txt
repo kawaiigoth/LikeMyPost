@@ -1,0 +1,14 @@
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\LikeMyPost.DAL.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\LikeMyPost.DAL.pdb
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\ILikeMyPostDAL.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\LikeMyPost.Entities.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\ILikeMyPostDAL.pdb
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\LikeMyPost.Entities.pdb
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\obj\Debug\LikeMyPost.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\obj\Debug\LikeMyPost.DAL.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\obj\Debug\LikeMyPost.DAL.pdb
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\NLog.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\NLog.xml
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\NLog.config
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\DAL.Exceptions.dll
+C:\Users\Lertyan\Desktop\LikeMyPost\LikeMyPost\LikeMyPost.DAL\bin\Debug\DAL.Exceptions.pdb

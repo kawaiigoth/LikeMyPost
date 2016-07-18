@@ -1,0 +1,31 @@
+﻿<div id="AddPostModal" class="modal fade" role="dialog">
+    <div class="modal-dialog post-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Добавить пост</h4>
+            </div>
+            <div class="modal-body">
+                <p class="hide" id="AddPostError"></p>
+                <form method="post" role="form" id="AddPostForm">
+                    <div class="form-group">
+                        <label for="heading">Заголовок:</label>
+                        <input class="form-control" required type="text" name="heading">
+                    </div>
+                    <fieldset class="form-group">
+                        <label for="exampleInputFile">Загрузка картинки</label>
+                        <input type="file" class="form-control-file" accept='image/jpeg,image/png,image/gif' id="image-upload" name="image">
+                        <small class="text-muted">Загружать картинку не обязательно, но если есть, то можно =). Фаил только в формете жопег(сжимай меня полностью!), гиф или пнг не должен превышать 4мб и каких-то там размеров.</small>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="text">Текст:</label>
+                        <textarea class="form-control" required rows="5" name="text"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-default" id="PostSubmit" value="Добавить">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

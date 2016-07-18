@@ -1,0 +1,43 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+
+    string email = Request.Form["email"];
+    string password = Request.Form["password"];
+    string rem = Request.Form["remember"];
+    bool remember;
+
+    if (rem == "on")
+    {
+        remember = true;
+    }
+    else
+    {
+        remember = false;
+    }
+
+    int code = Helper.CanLogin(email, password);
+
+    if (remember && code == 1)
+    {
+        FormsAuthentication.SetAuthCookie(Helper.GetUserNameByMail(email), createPersistentCookie: true);
+    }
+    else
+    {
+        FormsAuthentication.SetAuthCookie(Helper.GetUserNameByMail(email), createPersistentCookie: false);
+    }
+    if (IsAjax)
+    {
+        Json.Write(new
+        {
+            success = code,
+        }, Response.Output);
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.Forbidden);
+}
+

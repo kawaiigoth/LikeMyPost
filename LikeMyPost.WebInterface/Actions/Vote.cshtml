@@ -1,0 +1,39 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+    var type = Request["type"];
+    var str_id = Request["id"];
+    int id;
+    var name = User.Identity.Name;
+    bool code = false;
+    int value = 0;
+    if (!string.IsNullOrWhiteSpace(type) && !string.IsNullOrWhiteSpace(str_id) && int.TryParse(str_id, out id))
+    {
+
+        if (type == "postVote")
+        {
+            code = Helper.PostLike(id, name);
+            value = Helper.GetPostByID(id).Raiting;
+        }
+        else if (type == "commentVote")
+        {
+            code = Helper.CommentLike(id, name);
+            value = Helper.GetCommentById(id).Raiting;
+        }
+    }
+
+    if (IsAjax)
+    {
+        Json.Write(new
+        {
+            success = code,
+            value = value,
+        }, Response.Output);
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}

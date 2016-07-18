@@ -1,0 +1,41 @@
+﻿@using LikeMyPost.WebInterface;
+@using ILikeMyPostBLL;
+@using LikeMyPost.Entities;
+@using ILikeMyPost.BLL;
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+    Page.Title = "Добавить пост";
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.SetStatus(HttpStatusCode.Unauthorized);
+    }
+    var posts = Helper.GetNewPosts();
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h2>@Page.Title</h2>
+            <div class="form-container">
+                <div class="hide alert alert-danger" id="AddPostError">
+                </div>
+                <form method="post" role="form" id="AddPostForm">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Заголовок. Не более 100 символов..."  minlength="2" maxlength="100" name="heading" required>
+                    </div>
+                    <fieldset class="form-group">
+                        <label for="exampleInputFile">Картинка:</label>
+                        <input type="file" class="form-control-file" accept='image/jpeg,image/png,image/gif' id="image-upload" name="image">
+                        <small class="text-muted">Картинка в формате JPG,PNG,GIF весом не более 4mb. </small>
+                    </fieldset>
+                    <div class="form-group">
+                        <textarea class="form-control resize-none" placeholder="Текст..." rows="5" name="text" required></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-submit" id="PostSubmit" value="Добавить">
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>

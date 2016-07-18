@@ -1,0 +1,23 @@
+﻿@using LikeMyPost.WebInterface;
+@using ILikeMyPostBLL;
+@using LikeMyPost.Entities;
+@using ILikeMyPost.BLL;
+@{
+    var image_id = Request["id"];
+    Guid id;
+    if (string.IsNullOrWhiteSpace(image_id) || !Guid.TryParse(image_id, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+        return;
+    }
+
+    ImageDTO image = Helper.GetPostImage(id);
+    if (image == null)
+    {
+        Response.SetStatus(HttpStatusCode.NotFound);
+        return;
+    }
+
+    Response.WriteBinary(image.Data, image.Format);
+    Response.AddHeader("Content-Disposition", $"inline; filename=\"{image.Id}\"");
+}

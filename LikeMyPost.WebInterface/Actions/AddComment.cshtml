@@ -1,0 +1,41 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+    var post_id = Request["post_id"];
+    int id;
+    string text = Request.Form["comment"];
+    if (!string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(post_id) && int.TryParse(post_id, out id))
+    {
+        var code = 0;
+
+        code = Helper.AddComment(text, User.Identity.Name, id);
+        var date = DateTime.Now;
+        if (IsAjax && code == -1)
+        {
+            <li>
+                <article class="comment">
+                    <div class="counter">
+
+                        <div class="votes">1</div>
+                    </div>
+                    <header><span class="name"><a href="#">@User.Identity.Name</a></span> написал:</header>
+                    <main class="message">@text</main>
+                    <footer>
+                        <div class="time-passed">@date</div>
+                        @*<div class="comment-actions">
+                                <a href="#">Пожаловаться</a>
+                                <a href="#">Ответить</a>
+                            </div>*@
+                    </footer>
+                </article>
+            </li>
+        }
+
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}

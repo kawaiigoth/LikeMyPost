@@ -1,0 +1,23 @@
+﻿@using LikeMyPost.WebInterface;
+@using ILikeMyPostBLL;
+@using LikeMyPost.Entities;
+@using ILikeMyPost.BLL;
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+    Page.Title = "Горячее";
+    List<PostDTO> posts = Helper.GetHotPosts();
+    var generated = Helper.PagesList(10, posts);
+    var str_page_number = Request["page"];
+    int page_number;
+    if (string.IsNullOrWhiteSpace(str_page_number) || !int.TryParse(str_page_number, out page_number))
+    {
+        @RenderPage("~/Partials/_ListOfPosts.cshtml", new { Title = "Горячее", posts = generated, page_number = 1, url = "hot" })
+    }
+    else
+    {
+        @RenderPage("~/Partials/_ListOfPosts.cshtml", new { Title = "Горячее", posts = generated, page_number = page_number, url = "hot" })
+    }
+}
+
+
+

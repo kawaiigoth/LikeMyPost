@@ -1,0 +1,29 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost && User.Identity.IsAuthenticated)
+{
+
+    string heading = Request.Form["heading"];
+    var img = WebImage.GetImageFromRequest();
+    string text = Request.Form["text"];
+    int code;
+    if (img != null)
+    {
+        code = Helper.AddPost(heading, img, text, User.Identity.Name);
+    }
+    else
+    {
+        code = Helper.AddPost(heading, text, User.Identity.Name);
+    }
+
+    Json.Write(new
+    {
+        success = code,
+    }, Response.Output);
+
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.Forbidden);
+}

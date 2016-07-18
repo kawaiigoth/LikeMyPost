@@ -1,0 +1,375 @@
+/*=================================================
+==================HEADER STYLE HERE================
+=================================================*/
+.cdontainer-fluid-header {
+    padding: 0;
+}
+
+.background-mov {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url('../img/cool-red-bubbles-wallpaper-1.jpg');
+    background-position: center bottom;
+    background-size: 2000px;
+    background-repeat: no-repeat;
+    animation: backgroundMov 20s linear 1s infinite alternate;
+}
+
+@keyframes backgroundMov {
+    from {
+        background-position: center bottom;
+    }
+
+    to {
+        background-position: center top;
+    }
+}
+
+a, a:hover, a:focus, a:visited, a:active {
+    /*color: #000;*/
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: "8267";
+    src: url('../fonts/8267.otf'), url('../fonts/8267.otf'); /* IE */
+}
+
+.logo {
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: "8267";
+    font-style: italic;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 100px;
+    color: #FFF;
+}
+
+.navbar-toggle {
+    color: red;
+}
+
+.navigation {
+    list-style-type: none;
+    margin: 5px auto;
+    padding: 0;
+    /*width: 100%;*/
+}
+
+    .navigation li {
+        padding: 0 25px;
+        margin: 0;
+        /*width: 20%;*/
+        float: left;
+        text-align: center;
+    }
+
+        .navigation li a {
+            font-family: "8267";
+            line-height: 30px;
+            padding: 5px;
+            display: block;
+            font-size: 15px;
+            transition: text-shadow 1s;
+        }
+
+            .navigation li a:hover {
+                color: #FFF700;
+                text-shadow: 0px 0px 2px black;
+            }
+
+        .navigation li:not(:last-child) {
+            border-right: 2px solid #8c8b8b;
+        }
+
+.login-link {
+    line-height: 48px;
+    font-size: 25px;
+    transition: color 1s;
+}
+
+    .login-link:hover {
+        color: #FFF;
+        text-shadow: 0px 0px 2px black;
+    }
+
+
+.collapse .login {
+    display: none !important;
+}
+
+#Login {
+    display: none;
+}
+
+@media (max-width:767px) {
+
+
+    .background-mov {
+        height: 50px;
+        animation-duration: 0s;
+    }
+
+    .logo {
+        font-size: 20px;
+        line-height: 50px;
+        margin-left: -10px;
+        margin-top: 0px;
+    }
+
+    .navigation {
+        padding-left: 0px;
+    }
+
+        .navigation li {
+            width: 100%;
+            float: none;
+        }
+
+            .navigation li:not(:last-child) {
+                border-right: 0px;
+            }
+}
+
+@media (max-width:1999px) {
+
+    .navigation li a {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width:991px) {
+
+    .navigation li a {
+        font-size: 11px;
+    }
+}
+
+/*=================================================
+==================POST STYLE HERE============
+=================================================*/
+.resize-none {
+    resize: none;
+}
+
+@media (max-width:767px) {
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+.btn-submit {
+    border: 1px solid #7BB3B9;
+    border-radius: 3px;
+    background-color: #6CBAC3;
+    padding: 15px 20px;
+    line-height: 18px;
+    font-size: 16px;
+    color: #fff;
+    transition: background-color,200ms;
+}
+
+    .btn-submit:hover {
+        color: white;
+        background-color: #5898BB;
+    }
+
+.voted {
+    color: red;
+}
+
+.post ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .post ul li {
+        text-align: center;
+    }
+
+.post main {
+    padding: 15px 20px 15px;
+    ;
+    border: 1px solid #d0dde5;
+    border-radius: 3px;
+    background-color: #fbfbfb;
+}
+
+.post header {
+    padding-bottom: 10px;
+}
+
+    .post header h1 {
+        font-size: 30px;
+        color: #858585;
+        margin-bottom: 0px;
+    }
+
+.comments-number {
+    text-decoration: underline;
+    color: #858585;
+}
+
+    .comments-number:hover {
+        text-decoration: underline;
+        color: #337ab7;
+    }
+
+.counter {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.header-misc {
+    display: inline-block;
+}
+
+.upvote, .downvote {
+    font-size: 20px;
+    color: #858585;
+    transition: color 0.3s;
+}
+
+    .upvote:hover {
+        color: #81C982;
+    }
+
+    .downvote:hover {
+        color: #E06767;
+    }
+
+.votes {
+    text-align: center;
+    margin-top: -7px;
+    margin-bottom: -4px;
+    font-size: 20px;
+    color: #858585;
+}
+
+/*=================================================
+==================COMMENTS STYLE HERE============
+=================================================*/
+.margin-top-md {
+    margin-top: 20px;
+}
+
+.comments ul {
+    list-style-type: none;
+}
+
+.comment {
+    border: 1px solid transparent;
+    margin-top: 10px;
+    border-radius: 30px;
+    padding: 10px 5px 10px 30px;
+    transition: background-color 0.5s;
+}
+
+    .comment:hover {
+        background-color: #EBFAFF;
+    }
+
+.name {
+    font-weight: 600;
+
+}
+
+h1 {
+    display: inline-block;
+}
+
+.message {
+    padding: 5px;
+}
+
+.time-passed {
+    padding-left: 5px;
+    font-style: italic;
+    color: #B5B5B5;
+}
+
+.comment-actions {
+}
+
+    .comment-actions a {
+        color: #8ED0E6;
+        transition: color 0.5s;
+    }
+
+        .comment-actions a:hover {
+            color: #79ACBD;
+        }
+
+/*=================================================
+==================AUTHOR STYLE HERE============
+=================================================*/
+
+.author {
+    padding: 20px;
+    border: 1px solid transparent;
+    background-color: #f0f1eb;
+    border-radius: 3px;
+    color: #858585;
+}
+
+    .author span {
+        color: #000;
+    }
+
+    .author h3 {
+        margin: 0;
+        border-bottom: 1px solid #8c8b8b;
+    }
+
+/*=================================================
+==================FOOTER STYLE HERE============
+=================================================*/
+
+.footer {
+    padding: 20px 0px;
+}
+
+
+/*=================================================
+==================MAIN STYLE HERE============
+=================================================*/
+
+.hot {
+    border-bottom: 1px solid #8c8b8b;
+}
+
+.posts {
+    padding-left: 50px;
+}
+
+    .posts ul {
+        list-style-type: none;
+    }
+
+    .posts > ul > li {
+        margin-top: 15px;
+    }
+
+.post header h1 a {
+    color: #858585;
+}
+
+
+.user-form {
+    width: 240px;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.user-form-back {
+    background-color: #7BDBDA;
+}
+
+input[type=password], input[type=email], .username-length {
+    width: 190px;
+}
+
+.users > ul {
+    list-style-type: none;
+}

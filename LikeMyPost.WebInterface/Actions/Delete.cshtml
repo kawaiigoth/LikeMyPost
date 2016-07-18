@@ -1,0 +1,34 @@
+﻿@using LikeMyPost.WebInterface;
+
+@if (IsPost)
+{
+    var type = Request["type"];
+    var str_id = Request["id"];
+    int id;
+    bool code = false;
+    if (!string.IsNullOrWhiteSpace(type) && !string.IsNullOrWhiteSpace(str_id) && int.TryParse(str_id, out id))
+    {
+
+        if (type == "Post")
+        {
+            code = Helper.DeletePost(id);
+        }
+        else if (type == "Comment")
+        {
+            code = Helper.DeleteComment(id);
+        }
+    }
+
+    if (IsAjax)
+    {
+        Json.Write(new
+        {
+            success = code,
+        }, Response.Output);
+    }
+
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}
